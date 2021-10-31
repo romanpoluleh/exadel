@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+    th{ 
+        color:#fff;
+            }
+</style>
+
+<h5>Address - <h4 id="address"></h4> </h5>  
+<h5>Area (square metres) - <h4 id="area"></h4> </h5>  
+<h5>Established Date - <h4 id="estdate"></h4> </h5>  
+<h5>Ticket Price ($) - <h4 id="ticket"></h4> </h5>  
+
+<h3>Animals in the zoo</h3>
+<table class="table table-striped">
+    <tr  class="bg-info">
+        <th>Type</th>
+        <th>Color</th>
+        <th>Weight</th>
+        <th>Height</th>
+        <th>Origin</th>
+    </tr>
+
+    <tbody id="myTableAnimals">
+        
+    </tbody>
+</table>
+<h3>Workers of the zoo</h3>
+<table class="table table-striped">
+    <tr  class="bg-info">
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Phone</th>
+    </tr>
+
+    <tbody id="myTableWorkers">
+        
+    </tbody>
+</table>
+<script src = "task_3.js"></script>
+<script>
+    
+    document.getElementById("area").innerHTML = zoo.getArea;
+    document.getElementById("address").innerHTML = zoo.getAddress;
+    document.getElementById("ticket").innerHTML = zoo.getTicketPrice;
+    document.getElementById("estdate").innerHTML = zoo.getEstablishedDate;
+	buildTableAnimals(zoo.getAnimals);
+    buildTableWorkers(zoo.getWorkers);
+
+	function buildTableAnimals(data){
+		var table = document.getElementById('myTableAnimals')
+
+		for (var i = 0; i < data.length; i++){
+			var row = `<tr>
+							<td>${data[i]._type}</td>
+							<td>${data[i]._color}</td>
+							<td>${data[i]._weight}</td>
+                            <td>${data[i]._height}</td>
+                            <td>${data[i]._origin}</td>
+					  </tr>`
+			table.innerHTML += row
+		}
+	}
+
+    function buildTableWorkers(data){
+		var table = document.getElementById('myTableWorkers')
+
+		for (var i = 0; i < data.length; i++){
+			var row = `<tr>
+							<td>${data[i]._firstName}</td>
+							<td>${data[i]._lastName}</td>
+							<td>${data[i]._phone}</td>
+					  </tr>`
+			table.innerHTML += row
+		}
+	}
+
+</script>
